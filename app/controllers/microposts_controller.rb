@@ -4,9 +4,6 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    puts "*****"
-    puts @micropost
-    puts "*****"
     if @micropost.save
       flash[:success] = "Micropost created!"
       redirect_to root_url
@@ -17,17 +14,22 @@ class MicropostsController < ApplicationController
   end
 
   def update
-    likedpost = Micropost.find(params[:id])
-    puts "*****"
-    puts "*****"
-    puts "*****"
-    puts likedpost.user
-    puts "user: #{@current_user.name}"
-    puts "*****"
-    puts "*****"
-    puts "*****"
-    likedpost.liked_by @current_user
-    #@current_user.likes @micropost
+    ratedpost = Micropost.find(params[:id])
+    puts "***********************************"
+    puts params[:upvote]
+    puts "************************************"
+
+    #if(params[:upvote]=="true")
+      ratedpost.liked_by @current_user
+    #else
+    #  ratedpost.disliked_by @current_user
+    #end
+    redirect_to :back
+  end
+
+  def downvote
+    dislikedpost = Micropost.find(params[:id])
+    dislikedpost.disliked_by @current_user
     redirect_to :back
   end
   
