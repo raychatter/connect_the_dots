@@ -15,9 +15,9 @@ class MicropostsController < ApplicationController
 
   def update
     ratedpost = Micropost.find(params[:id])
-    puts "***********************************"
-    puts params[:upvote]
-    puts "************************************"
+    #puts "***********************************"
+    #puts params[:upvote]
+    #puts "************************************"
 
     #if(params[:upvote]=="true")
       ratedpost.liked_by @current_user
