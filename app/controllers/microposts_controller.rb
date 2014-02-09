@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Experience created!"
       redirect_to root_url
     else
       @feed_items = []
@@ -21,6 +21,7 @@ class MicropostsController < ApplicationController
 
     #if(params[:upvote]=="true")
       ratedpost.liked_by @current_user
+    flash[:success] = "Experience upvoted!"
     #else
     #  ratedpost.disliked_by @current_user
     #end
