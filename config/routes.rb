@@ -15,4 +15,5 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/downvote', to: 'microposts#downvote', via: 'put'
+  mount Commontator::Engine => '/commontator'
 end
