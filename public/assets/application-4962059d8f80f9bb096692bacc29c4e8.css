@@ -3472,10 +3472,10 @@ input[type="submit"].btn {
     display: table;
     content: "";
     line-height: 0; }
-  .navbar-inner:after {
+.navbar-inner:after {
     clear: both; }
 
-.navbar .container {
+.navbar .container {background-color: #000000;
   width: auto; }
 
 .nav-collapse.collapse {
