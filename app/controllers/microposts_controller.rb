@@ -1,9 +1,12 @@
 class MicropostsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy, :update]
   before_action :correct_user,   only: :destroy
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    puts "*****"
+    puts @micropost
+    puts "*****"
     if @micropost.save
       flash[:success] = "Micropost created!"
       redirect_to root_url
@@ -13,9 +16,19 @@ class MicropostsController < ApplicationController
     end
   end
 
-  def up_vote
-    @micropost.liked_by @current_user
-    redirect_to user_url
+  def update
+    likedpost = Micropost.find(params[:id])
+    puts "*****"
+    puts "*****"
+    puts "*****"
+    puts likedpost
+    puts "user: #{@current_user.name}"
+    puts "*****"
+    puts "*****"
+    puts "*****"
+    likedpost.liked_by @current_user
+    #@current_user.likes @micropost
+    redirect_to
   end
   
   def destroy
