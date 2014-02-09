@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209015608) do
+ActiveRecord::Schema.define(version: 20140209045344) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes"
     t.integer  "up_vote"
     t.integer  "down_vote"
     t.integer  "cached_votes_total",    default: 0
