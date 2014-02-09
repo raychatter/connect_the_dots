@@ -14,10 +14,4 @@ SampleApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  #match '/microposts/2', to: 'microposts#up_vote', via: 'post'
-  #match '/microposts/4', to: 'microposts#up_vote', via: 'post'
-  #match '/microposts/5', to: 'microposts#up_vote', via: 'post'
-  #match '/microposts/6', to: 'microposts#up_vote', via: 'post'
-  #match '/microposts/7', to: 'microposts#up_vote', via: 'post'
-  #match '/microposts/8', to: 'microposts#up_vote', via: 'post'
 end

@@ -21,14 +21,14 @@ class MicropostsController < ApplicationController
     puts "*****"
     puts "*****"
     puts "*****"
-    puts likedpost
+    puts likedpost.user
     puts "user: #{@current_user.name}"
     puts "*****"
     puts "*****"
     puts "*****"
     likedpost.liked_by @current_user
     #@current_user.likes @micropost
-    redirect_to
+    redirect_to :back
   end
   
   def destroy
