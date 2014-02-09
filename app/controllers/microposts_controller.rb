@@ -12,6 +12,11 @@ class MicropostsController < ApplicationController
       render 'static_pages/home'
     end
   end
+
+  def up_vote
+    @micropost.liked_by @current_user
+    redirect_to user_url
+  end
   
   def destroy
     @micropost.destroy
