@@ -9,6 +9,12 @@
 /log/*.log
 /tmp
 
+# Ignore IntelliJ files
+*.ipr
+*.iws
+*.iml
+*.idea
+
 # Ignore other unneeded files.
 database.yml
 doc/
@@ -16,7 +22,6 @@ doc/
 *~
 .project
 .DS_Store
-.idea
 .rvmrc
 .ruby-*
 .secret
