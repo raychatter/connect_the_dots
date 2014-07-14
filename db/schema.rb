@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713024617) do
+ActiveRecord::Schema.define(version: 20140713225318) do
 
   create_table "posts", force: true do |t|
     t.string   "content"
     t.string   "category"
-    t.integer  "upvotes"
+    t.integer  "upvotes",    default: 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
