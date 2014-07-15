@@ -5,7 +5,7 @@
         <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Code of Conduct", root_path %></li>
+          <li><%= link_to "Code of Conduct", code_of_conduct_path %></li>
           <li><%= link_to "Need Immediate Assistance?", help_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
