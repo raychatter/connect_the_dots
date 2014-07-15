@@ -10,6 +10,7 @@ ConnectTheDots::Application.routes.draw do
    root 'static_pages#home'
    match '/about', to: 'static_pages#about', via: 'get'
    match '/assistance', to: 'static_pages#assistance', via: 'get'
+   match '/signup', to: 'users#new', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
