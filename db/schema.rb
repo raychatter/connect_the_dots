@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209045344) do
+ActiveRecord::Schema.define(version: 20140716181439) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20140209045344) do
   add_index "microposts", ["cached_weighted_score"], name: "index_microposts_on_cached_weighted_score"
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
 
+  create_table "posts", force: true do |t|
+    t.string   "content"
+    t.string   "category"
+    t.integer  "upvotes",    default: 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -45,6 +56,17 @@ ActiveRecord::Schema.define(version: 20140209045344) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "replies", force: true do |t|
+    t.string   "content"
+    t.integer  "micropost_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "replies", ["micropost_id"], name: "index_replies_on_micropost_id"
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
