@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715000650) do
+ActiveRecord::Schema.define(version: 20140717010914) do
+
+  create_table "microposts", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "votes"
+    t.integer  "up_vote"
+    t.integer  "down_vote"
+    t.integer  "cached_votes_total",    default: 0
+    t.integer  "cached_votes_score",    default: 0
+    t.integer  "cached_votes_up",       default: 0
+    t.integer  "cached_votes_down",     default: 0
+    t.integer  "cached_weighted_score", default: 0
+  end
+
+  add_index "microposts", ["cached_votes_down"], name: "index_microposts_on_cached_votes_down"
+  add_index "microposts", ["cached_votes_score"], name: "index_microposts_on_cached_votes_score"
+  add_index "microposts", ["cached_votes_total"], name: "index_microposts_on_cached_votes_total"
+  add_index "microposts", ["cached_votes_up"], name: "index_microposts_on_cached_votes_up"
+  add_index "microposts", ["cached_weighted_score"], name: "index_microposts_on_cached_weighted_score"
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
 
   create_table "posts", force: true do |t|
     t.string   "content"
@@ -24,16 +46,53 @@ ActiveRecord::Schema.define(version: 20140715000650) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "replies", force: true do |t|
+    t.string   "content"
+    t.integer  "micropost_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "replies", ["micropost_id"], name: "index_replies_on_micropost_id"
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "username"
-    t.string   "password"
     t.string   "email"
     t.string   "school"
     t.integer  "grade"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
 end
