@@ -25,7 +25,7 @@ class RepliesController < ApplicationController
   # POST /replies
   # POST /replies.json
   def create
-    @reply = @micropost_id.replies.build(reply_params)
+    @reply = current_user.replies.build(reply_params)
     if @reply.save
       flash[:success] = "Reply created!"
       redirect_to root_url

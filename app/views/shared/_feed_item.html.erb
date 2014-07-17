@@ -1,3 +1,4 @@
+<% @feed_item = feed_item %>
 <li id="<%= feed_item.id %>">
   <%= link_to gravatar_for(feed_item.user), feed_item.user %>
     <span class="user">
@@ -13,6 +14,6 @@
                                      data: { confirm: "You sure?" },
                                      title: feed_item.content %>
   <% end %>
-  <%= render partial:'shared/reply_form', locals:{feed_item:@feed_item} %></div>
+  <%= render partial:'replies/form' %></div>
   
 </li>
