@@ -9,8 +9,8 @@
 <body>
 
 <header>
-	<% if signed_in? %>
-		<%= link_to "Sign out", signout_path, method: "delete" %>
+	<% if logged_in? %>
+		<%= link_to "Logout", logout_path, method: "delete" %>
 	<% else %>
 		<h3>You are not signed in.</h3>
 	<% end %>
