@@ -3,5 +3,6 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "How can I help?" %>
   </div>
+  <%= f.hidden_field :micropost_id, :value => @feed_item.id %>
   <%= f.submit "Reply", class: "btn btn-large btn-primary" %>
 <% end %>

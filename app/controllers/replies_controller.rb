@@ -25,13 +25,11 @@ class RepliesController < ApplicationController
   # POST /replies
   # POST /replies.json
   def create
-    debugger
-    @reply = current_user.replies.build(reply_params)
+    @reply = @micropost_id.replies.build(reply_params)
     if @reply.save
       flash[:success] = "Reply created!"
       redirect_to root_url
     else
-      @feed_items = []
       render 'static_pages/home'
     end
   end
@@ -82,6 +80,6 @@ class RepliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reply_params
-      params.require(:reply).permit(:content, :micropost_id, :user_id)
+      params.require(:reply).permit(:content, :micropost_id)
     end
 end

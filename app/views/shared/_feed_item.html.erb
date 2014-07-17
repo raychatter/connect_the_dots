@@ -13,5 +13,6 @@
                                      data: { confirm: "You sure?" },
                                      title: feed_item.content %>
   <% end %>
+  <%= render partial:'shared/reply_form', locals:{feed_item:@feed_item} %></div>
   
 </li>
