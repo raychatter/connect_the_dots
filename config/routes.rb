@@ -11,8 +11,8 @@ ConnectTheDots::Application.routes.draw do
    match '/about', to: 'static_pages#about', via: 'get'
    match '/assistance', to: 'static_pages#assistance', via: 'get'
    match '/signup', to: 'users#new', via: 'get'
-   match '/signin', to: 'sessions#new', via: 'get'
-   match '/signout', to: 'sessions#destroy', via: 'delete'
+   match '/login', to: 'sessions#new', via: 'get'
+   match '/logout', to: 'sessions#destroy', via: 'delete'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
