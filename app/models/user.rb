@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  validates :school_email, presence: true
+  validates :school, presence: true
+  validates :username, presence: true
+  validates :grade, presence: true
   acts_as_voter
 
   def User.new_remember_token
