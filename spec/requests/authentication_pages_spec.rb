@@ -29,7 +29,7 @@ describe "Authentication" do
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in "Email",    with: user.email.upcase
+        fill_in "personal_email",    with: user.personal_email.upcase
         fill_in "Password", with: user.password
         click_button "Sign in"
       end
@@ -56,7 +56,7 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-          fill_in "Email",    with: user.email
+          fill_in "personal_email",    with: user.personal_email
           fill_in "Password", with: user.password
           click_button "Sign in"
         end
@@ -125,7 +125,7 @@ describe "Authentication" do
 
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      let(:wrong_user) { FactoryGirl.create(:user, personal_email: "wrong@example.com") }
       before { sign_in user, no_capybara: true }
 
       describe "submitting a GET request to the Users#edit action" do
