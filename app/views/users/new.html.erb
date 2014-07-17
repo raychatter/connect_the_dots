@@ -6,17 +6,29 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :name %>
+      <%= f.label :name, "Full Name" %>
       <%= f.text_field :name %>
+      
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+      
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Password Confirmation" %>
+      <%= f.password_field :password_confirmation %>
 
       <%= f.label :personal_email %>
       <%= f.text_field :personal_email %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.label :school_email %>
+      <%= f.text_field :school_email %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :school %>
+      <%= f.select :school, options_for_select(["Redwood Day School", "Cate School"]) %>
+
+      <%= f.label :grade %>
+      <%= f.select :grade, options_for_select((6..12)) %> 
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
