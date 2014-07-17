@@ -1,6 +1,9 @@
 <h1>StaticPages#home</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
 
+<% if logged_in? %>
+	<%= render 'posts/form' %>
+<% else %>
   <div class="center hero-unit">
 
     <%= image_tag("connecthedots_homea.gif", alt: "Connect The Dots") %>
@@ -12,3 +15,5 @@
    <p><%= link_to "Sign up now!", signup_path %></p>
 
   </div>
+  
+<% end %>

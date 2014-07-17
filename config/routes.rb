@@ -1,5 +1,5 @@
 ConnectTheDots::Application.routes.draw do
-  resources :posts
+  resources :posts, only: [:create, :destroy]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
